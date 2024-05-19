@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_new_card_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddNewCardActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/add_card_screen_toolbar" />
+
+    <ImageView
+        android:id="@+id/folder_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/folder_v2" />
+
+    <EditText
+        android:id="@+id/folder_name_text_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/folder_image"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="55dp"
+        android:hint="Enter folder name"
+        android:fontFamily="@font/font"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/save_folder_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/folder_name_text_field"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="65dp"
+        android:text="Save folder"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        android:padding="15dp"
+        android:fontFamily="@font/font"
+        android:drawableLeft="@drawable/accept"
+        android:drawableRight="@drawable/transparent"
+        android:autoSizeTextType="uniform"
+        />
+
+</RelativeLayout>

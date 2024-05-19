@@ -1,64 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_screen"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    tools:context=".MainActivity"
+    android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/menuBar"
+    <include layout="@layout/main_toolbar"
+        android:id="@+id/toolbar"
+        />
+
+
+    <GridView
+        android:layout_below="@id/toolbar"
+        android:id="@+id/card_grid_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        android:background="@android:color/darker_gray"
-        android:gravity="center_vertical">
-        <ImageButton
-            android:id="@+id/menuIcon"
-            android:background="@color/material_on_background_disabled"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_menu"
-            android:contentDescription="Menu Icon"
-            android:padding="8dp"/>
+        android:layout_height="match_parent"
+        android:horizontalSpacing="6dp"
+        android:numColumns="3"
+        android:verticalSpacing="6dp" />
 
-        <!-- Add menu items here -->
-        <!-- Example item -->
-        <TextView
-            android:id="@+id/menuText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="DEFAULT"
-            android:textColor="@color/black"
-            android:textSize="19sp"
-            android:layout_marginEnd="16dp"/>
-
-        <ImageButton
-            android:id="@+id/addIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/black"
-            android:contentDescription="Menu Icon"
-            android:padding="8dp"
-            android:src="@drawable/ic_add" />
-
-    </LinearLayout>
-
-    <EditText
-        android:id="@+id/searchEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/menuBar"
-        android:layout_margin="16dp"
-        android:layout_marginTop="57dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/edit_text_background"
-        android:drawableLeft="@drawable/ic_search"
-        android:drawablePadding="8dp"
-        android:hint="Search for cards or libraries"
-        android:textColorHint="@color/black"
-        android:imeOptions="actionSearch"
-        android:inputType="text"
-        android:padding="8dp" />
 </RelativeLayout>

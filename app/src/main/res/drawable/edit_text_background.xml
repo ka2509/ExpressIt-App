@@ -1,5 +1,0 @@
-<!-- res/drawable/edit_text_background.xml -->
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@android:color/darker_gray" /> <!-- Change color as needed -->
-    <corners android:radius="10dp" /> <!-- Adjust radius for rounded corners -->
-</shape>

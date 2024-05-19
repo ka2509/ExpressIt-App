@@ -32,8 +32,10 @@ dependencies {
 
     implementation(libs.appcompat)
     implementation(libs.material)
+    implementation("com.github.dhaval2404:imagepicker:2.1")
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.cardview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

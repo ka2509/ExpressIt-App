@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_new_card_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddNewCardActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/add_card_screen_toolbar" />
+
+    <ImageView
+        android:id="@+id/add_image_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:maxWidth="220dp"
+        android:maxHeight="220dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:src="@drawable/image" />
+
+    <EditText
+        android:id="@+id/card_name_text_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_image_button"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="55dp"
+        android:hint="Please enter card name first"
+        android:fontFamily="@font/font"
+        android:textSize="20sp"/>
+
+    <CheckBox
+        android:id="@+id/covert_to_audio_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Convert card name to audio"
+        android:textStyle="bold"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="75dp"
+        android:fontFamily="@font/font"
+        android:layout_below="@+id/card_name_text_field"/>
+
+    <TextView
+        android:id="@+id/recording_notification"
+        android:layout_below="@+id/covert_to_audio_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="80dp"
+        android:textColor="@color/dark_blue"
+        android:fontFamily="@font/font"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        />
+
+    <Button
+        android:id="@+id/record_voice_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recording_notification"
+        android:layout_marginStart="65dp"
+        android:layout_marginEnd="65dp"
+        android:text="RECORD"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        android:padding="15dp"
+        android:fontFamily="@font/font"
+        android:drawableLeft="@drawable/record"
+        android:drawableRight="@drawable/transparent"
+        android:autoSizeTextType="uniform"
+        />
+
+    <TextView
+        android:id="@+id/save_card_notification"
+        android:layout_below="@+id/record_voice_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="70dp"
+        android:textColor="@color/dark_red"
+        android:textStyle="bold"
+        android:fontFamily="@font/font"
+        android:textAlignment="center"
+        />
+
+    <Button
+        android:id="@+id/save_card_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/save_card_notification"
+        android:layout_marginStart="65dp"
+        android:layout_marginEnd="65dp"
+        android:text="Save card"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/font"
+        android:padding="15dp"
+        android:drawableLeft="@drawable/accept"
+        android:drawableRight="@drawable/transparent"
+        android:autoSizeTextType="uniform"/>
+
+</RelativeLayout>

@@ -2,4 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="light_blue">#baf8fd</color>
+    <color name="dark_red">#cc0000</color>
+    <color name="dark_blue">#3333cc</color>
+    <color name="dark_yellow">#FFC300</color>
+    <color name="dark_green">#33cc33</color>
+    <color name="ucrop_color_toolbar">#baf8fd</color>
+<!--    <color name="ucrop_color_statusbar">#baf8fd</color>-->
+    <color name="ucrop_color_widget_active">#0000cc</color>
 </resources>
