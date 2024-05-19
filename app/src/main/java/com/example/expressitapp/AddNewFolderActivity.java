@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
@@ -35,17 +36,24 @@ public class AddNewFolderActivity extends AppCompatActivity {
         backButton = findViewById(R.id.toolbar).findViewById(R.id.toolbar_back_icon);
         folderNameTextField = findViewById(R.id.folder_name_text_field);
         saveFolderButton = findViewById(R.id.save_folder_button);
-
         TextView textView = findViewById(R.id.toolbar).findViewById(R.id.toolbar_textview);
         textView.setText("Add new folder");
+
+
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                // Handle the back button event
+                handleBackButtonClicked();
+            }
+        };
+        AddNewFolderActivity.this.getOnBackPressedDispatcher().addCallback(this, callback);
 
         // back button
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Context activity = MainActivity.previousActivities.pop();
-                Intent intent = new Intent(AddNewFolderActivity.this, activity.getClass());
-                startActivity(intent);
+                handleBackButtonClicked();
             }
         });
         //================
@@ -139,6 +147,14 @@ public class AddNewFolderActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void handleBackButtonClicked() {
+        if(!MainActivity.previousActivities.empty()) {
+            Context activity = MainActivity.previousActivities.pop();
+            Intent intent = new Intent(AddNewFolderActivity.this, activity.getClass());
+            startActivity(intent);
+        }
     }
 
     private boolean saveNewFolder(String dirName) {

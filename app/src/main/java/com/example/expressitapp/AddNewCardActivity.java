@@ -27,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -77,13 +78,20 @@ public class AddNewCardActivity extends AppCompatActivity {
         converToAudioCheckBox = findViewById(R.id.covert_to_audio_checkbox);
         disableButtons();
 
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                // Handle the back button event
+                handleBackButtonClicked();
+            }
+        };
+        AddNewCardActivity.this.getOnBackPressedDispatcher().addCallback(this, callback);
+
         // back button
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Context activity = MainActivity.previousActivities.pop();
-                Intent intent = new Intent(AddNewCardActivity.this, activity.getClass());
-                startActivity(intent);
+                handleBackButtonClicked();
             }
         });
         //============
@@ -280,6 +288,14 @@ public class AddNewCardActivity extends AppCompatActivity {
                 textToSpeech.setLanguage(Locale.ENGLISH);
             }
         });
+    }
+
+    private void handleBackButtonClicked() {
+        if(!MainActivity.previousActivities.empty()) {
+            Context activity = MainActivity.previousActivities.pop();
+            Intent intent = new Intent(AddNewCardActivity.this, activity.getClass());
+            startActivity(intent);
+        }
     }
 
 

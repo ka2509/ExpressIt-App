@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -66,6 +67,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         backButton = findViewById(R.id.toolbar).findViewById(R.id.toolbar_back_icon);
         show_sentence_button = findViewById(R.id.toolbar).findViewById(R.id.show_sentence_icon);
 
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                // Handle the back button event
+                handleBackButtonClicked();
+            }
+        };
+        MainActivity.this.getOnBackPressedDispatcher().addCallback(this, callback);
+
 
         // tool bar text view
         if (currentFolder.equals("")) {
@@ -108,12 +118,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!previousActivities.empty()) {
-                    currentFolder = previousFolders.pop();
-                    Context activity = MainActivity.previousActivities.pop();
-                    Intent intent = new Intent(MainActivity.this, activity.getClass());
-                    startActivity(intent);
-                }
+                handleBackButtonClicked();
             }
         });
         //=================
@@ -188,6 +193,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 dialog.getWindow().setGravity(Gravity.BOTTOM);
             }
         });
+    }
+
+    private void handleBackButtonClicked() {
+        if (!previousActivities.empty()) {
+            currentFolder = previousFolders.pop();
+            Context activity = MainActivity.previousActivities.pop();
+            Intent intent = new Intent(MainActivity.this, activity.getClass());
+            startActivity(intent);
+        }
     }
 
     private void stopAllPlayingCards() {
